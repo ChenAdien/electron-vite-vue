@@ -1,0 +1,48 @@
+{
+  "name": "electron-demo",
+  "private": true,
+  "version": "0.0.0",
+  "main": "dist/main/main.cjs",
+  "scripts": {
+    "dev": "vite",
+    "vite:build": "vue-tsc --noEmit && vite build",
+    "electron:build": "electron-builder",
+    "build": "node ./scripts/build.mjs && vite build && electron-builder",
+    "preview": "vite preview",
+    "electron": "electron .",
+    "electron:dev": "node ./scripts/dev.mjs"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5",
+    "vue": "^3.2.25"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^2.3.3",
+    "electron": "^18.2.3",
+    "electron-builder": "^23.0.3",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9",
+    "vue-tsc": "^0.34.7"
+  },
+  "build": {
+    "appId": "com.your-website.your-app",
+    "productName": "ElectronApp",
+    "copyright": "Copyright © 2021 <your-name>",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "dist_electron"
+    }
+  }
+}
